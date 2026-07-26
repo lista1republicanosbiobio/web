@@ -106,9 +106,9 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="text-xs font-black tracking-widest bg-repRed text-white px-1.5 py-0.5 rounded">LISTA 1</span>
-                            <!--<span class="text-xs font-bold text-slate-600 dark:text-slate-300">BÍO BÍO</span>-->
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-300">BÍO BÍO</span>
                         </div>
-                        <h1 class="text-lg font-black tracking-tight text-slate-400 dark:text-white group-hover:text-repRed-glow transition-colors">
+                        <h1 class="text-lg font-black tracking-tight text-slate-900 dark:text-white group-hover:text-repRed-glow transition-colors">
                             LA VOZ DE LA MILITANCIA
                         </h1>
                     </div>
@@ -122,31 +122,24 @@
                     <a href="#consejeros" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Consejeros Cabildo</a>
                     <a href="#provincias" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Provincias</a>
                     <a href="#100dias" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">100 Días</a>
-                    
                 </div>
 
-                <!-- CTA & Theme Switcher Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <!-- Theme Toggle Button -->
+                <!-- Right Nav Controls (Single Theme Toggle + CTA + Mobile Hamburger) -->
+                <div class="flex items-center gap-3">
+                    <!-- Single Universal Theme Toggle Button -->
                     <button id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Cambiar modo de color" 
                         class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400 border border-slate-300 dark:border-slate-700 hover:scale-105 transition-all shadow-sm">
                         <i id="theme-toggle-icon" class="fa-solid fa-moon text-base"></i>
                     </button>
 
-                    <a href="#sumate" class="bg-gradient-to-r from-repRed to-repRed-dark hover:from-repRed-light hover:to-repRed text-white font-bold px-5 py-2.5 rounded-xl shadow-lg hover:shadow-repRed/30 transition-all text-sm flex items-center gap-2">
+                    <!-- Desktop CTA -->
+                    <a href="#sumate" class="hidden sm:flex bg-gradient-to-r from-repRed to-repRed-dark hover:from-repRed-light hover:to-repRed text-white font-bold px-5 py-2.5 rounded-xl shadow-lg hover:shadow-repRed/30 transition-all text-sm items-center gap-2">
                         <i class="fa-solid fa-heart text-xs"></i>
                         <span>Sumarme al Equipo</span>
                     </a>
-                </div>
 
-                <!-- Mobile Menu Button & Theme Switcher -->
-                <div class="flex items-center gap-2 lg:hidden">
-                    <button onclick="toggleTheme()" aria-label="Cambiar tema" 
-                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400 border border-slate-300 dark:border-slate-700">
-                        <i id="theme-toggle-icon-mobile" class="fa-solid fa-moon text-base"></i>
-                    </button>
-
-                    <button id="mobile-menu-btn" class="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg">
+                    <!-- Mobile Menu Trigger -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -161,7 +154,6 @@
             <a href="#consejeros" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Consejeros Cabildo</a>
             <a href="#provincias" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Desglose Provincial</a>
             <a href="#100dias" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Plan 100 Días</a>
-            <a href="#asistente" class="block py-2 text-amber-600 dark:text-amber-400 font-semibold">Asistente IA Militante</a>
             <a href="#sumate" class="block w-full text-center bg-repRed text-white py-2.5 rounded-xl font-bold mt-2">
                 ¡Sumarme al Equipo!
             </a>
@@ -389,34 +381,7 @@
 
             </div>
         </div>
-    </section>
-
-    <!-- 8 Pilares Programáticos -->
-    <section id="pilares" class="py-20 bg-slate-100 dark:bg-repNavy-dark border-t border-slate-200 dark:border-slate-800 transition-colors relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
-                    Bases Programáticas
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">LOS 8 PILARES DE LA LISTA 1</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-base">
-                    Haz clic en cada pilar para explorar el objetivo, las líneas de acción concretas y los compromisos verificables para la Región del Bío Bío.
-                </p>
-            </div>
-
-            <!-- Pillars Navigation Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-10" id="pillar-tabs">
-                <!-- Tab Buttons will be rendered by JavaScript -->
-            </div>
-
-            <!-- Active Pillar Detail Card Container -->
-            <div id="pillar-content" class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-10 shadow-xl dark:shadow-2xl transition-all">
-                <!-- Dynamic Content Rendered Here -->
-            </div>
-        </div>
-    </section>
-
-            <!-- Directiva Cards with Light/Dark Support -->
+            <!-- Directiva Cards with Candidate Images -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Presidenta Regional -->
@@ -424,9 +389,10 @@
                     <div class="absolute top-3 right-3 bg-repRed text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">
                         Presidencia
                     </div>
-                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-repRed flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
-                        YM
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" 
+                         alt="Yasna Mardones Sáez" 
+                         onerror="this.src='https://placehold.co/200x200/0B1E36/FFFFFF?text=Yasna+Mardones'"
+                         class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-repRed my-4 shadow-lg group-hover:scale-105 transition-transform" />
                     <h3 class="text-xl font-black text-slate-900 dark:text-white">YASNA MARDONES SÁEZ</h3>
                     <p class="text-repRed dark:text-repRed-glow font-bold text-sm mb-4">Presidenta Regional Bío Bío</p>
                     <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
@@ -436,9 +402,10 @@
 
                 <!-- Secretario Regional -->
                 <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
-                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-blue-500 flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
-                        LS
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80" 
+                         alt="Luis Santibáñez Bastidas" 
+                         onerror="this.src='https://placehold.co/200x200/0B1E36/FFFFFF?text=Luis+Santibañez'"
+                         class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-blue-500 my-4 shadow-lg group-hover:scale-105 transition-transform" />
                     <h3 class="text-xl font-black text-slate-900 dark:text-white">LUIS SANTIBAÑEZ BASTIDAS</h3>
                     <p class="text-blue-600 dark:text-blue-400 font-bold text-sm mb-4">Secretario Regional Bío Bío</p>
                     <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
@@ -448,9 +415,10 @@
 
                 <!-- Tesorera Regional -->
                 <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
-                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-emerald-500 flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
-                        ER
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80" 
+                         alt="Erika Román Silva" 
+                         onerror="this.src='https://placehold.co/200x200/0B1E36/FFFFFF?text=Erika+Román'"
+                         class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-emerald-500 my-4 shadow-lg group-hover:scale-105 transition-transform" />
                     <h3 class="text-xl font-black text-slate-900 dark:text-white">ERIKA ROMÁN SILVA</h3>
                     <p class="text-emerald-600 dark:text-emerald-400 font-bold text-sm mb-4">Tesorera Regional Bío Bío</p>
                     <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
@@ -460,9 +428,10 @@
 
                 <!-- Vicepresidente 1 -->
                 <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-amber-500 flex items-center justify-center text-slate-800 dark:text-white text-2xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
-                        SG
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80" 
+                         alt="Sebastián Guenante Arancibia" 
+                         onerror="this.src='https://placehold.co/200x200/0B1E36/FFFFFF?text=Sebastián+Guenante'"
+                         class="w-24 h-24 mx-auto rounded-full object-cover border-4 border-amber-500 my-4 shadow-lg group-hover:scale-105 transition-transform" />
                     <h3 class="text-lg font-black text-slate-900 dark:text-white">SEBASTIÁN GUENANTE ARANCIBIA</h3>
                     <p class="text-amber-600 dark:text-amber-400 font-bold text-xs mb-4">Vicepresidente 1° Regional</p>
                     <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
@@ -472,9 +441,10 @@
 
                 <!-- Vicepresidente 2 -->
                 <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-purple-500 flex items-center justify-center text-slate-800 dark:text-white text-2xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
-                        AM
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80" 
+                         alt="Ángelo Millamán López" 
+                         onerror="this.src='https://placehold.co/200x200/0B1E36/FFFFFF?text=Ángelo+Millamán'"
+                         class="w-24 h-24 mx-auto rounded-full object-cover border-4 border-purple-500 my-4 shadow-lg group-hover:scale-105 transition-transform" />
                     <h3 class="text-lg font-black text-slate-900 dark:text-white">ÁNGELO MILLAMÁN LÓPEZ</h3>
                     <p class="text-purple-600 dark:text-purple-400 font-bold text-xs mb-4">Vicepresidente 2° Regional</p>
                     <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
@@ -486,7 +456,7 @@
         </div>
     </section>
 
-    <!-- Consejeros del Cabildo -->
+    <!-- Consejeros del Cabildo con Fotos -->
     <section id="consejeros" class="py-20 bg-slate-100 dark:bg-repNavy-dark border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -499,93 +469,115 @@
                 </p>
             </div>
 
-            <!-- Consejeros Grid -->
+            <!-- Consejeros Grid con Imágenes -->
             <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        2
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#2</span>
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" 
+                         alt="Ingrid Salazar Mora" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Ingrid+Salazar'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">INGRID SALAZAR MORA</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        3
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#3</span>
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" 
+                         alt="Christian Arellano Vera" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Christian+Arellano'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">CHRISTIAN ARELLANO VERA</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        4
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#4</span>
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" 
+                         alt="James Argo Chávez" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=James+Argo'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">JAMES ARGO CHÁVEZ</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        6
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#6</span>
+                    <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&auto=format&fit=crop&q=80" 
+                         alt="Jacqueline Delgado Contreras" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Jacqueline+Delgado'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">JACQUELINE DELGADO CONTRERAS</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        7
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#7</span>
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&auto=format&fit=crop&q=80" 
+                         alt="Eliana Fernández Neira" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Eliana+Fernández'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">ELIANA FERNÁNDEZ NEIRA</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        10
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#10</span>
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80" 
+                         alt="José Miguel Muñoz Sáez" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=José+Muñoz'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">JOSÉ MIGUEL MUÑOZ SÁEZ</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        11
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#11</span>
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" 
+                         alt="Jonathan Bedwell Silva" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Jonathan+Bedwell'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">JONATHAN BEDWELL SILVA</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        12
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#12</span>
+                    <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80" 
+                         alt="Eduardo Carrillo Neira" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Eduardo+Carrillo'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">EDUARDO CARRILLO NEIRA</h4>
-                    <span class="text-[11px] text-slate-400">Consejero del Cabildo</span>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        13
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#13</span>
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80" 
+                         alt="César Valenzuela Ramírez" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=César+Valenzuela'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">CÉSAR VALENZUELA RAMÍREZ</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        14
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#14</span>
+                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80" 
+                         alt="Manuel Pino Contreras" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Manuel+Pino'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">MANUEL PINO CONTRERAS</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
-                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                        15
-                    </div>
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group relative">
+                    <span class="absolute top-3 right-3 bg-repRed text-white text-xs font-black px-2.5 py-0.5 rounded-full shadow">#15</span>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" 
+                         alt="Patricio Torres Bastías" 
+                         onerror="this.src='https://placehold.co/150x150/0B1E36/FFFFFF?text=Patricio+Torres'" 
+                         class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-repRed mb-3 group-hover:scale-105 transition-transform" />
                     <h4 class="font-bold text-slate-900 dark:text-white text-sm">PATRICIO TORRES BASTÍAS</h4>
                     <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
                 </div>
@@ -764,67 +756,6 @@
         </div>
     </section>
 
-    <!-- Asistente Virtual de la Militancia -->
-    <section id="asistente" class="py-20 bg-slate-900 border-t border-slate-800">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="bg-gradient-to-br from-repNavy via-slate-800 to-repNavy border border-slate-700/90 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
-                
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-700/80 pb-6">
-                    <div class="flex items-center gap-4 text-center sm:text-left">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-900 text-2xl shadow-lg font-black">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-black text-white">Asistente IA - Lista 1</h3>
-                            <p class="text-xs text-slate-300">Resuelve cualquier duda sobre las Bases Programáticas Bío Bío en tiempo real.</p>
-                        </div>
-                    </div>
-                    <span class="text-xs bg-amber-400/10 border border-amber-400/30 text-amber-400 font-bold px-3 py-1.5 rounded-full flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-                        Gemini 3 Flash Powered
-                    </span>
-                </div>
-
-                <!-- Suggested Questions Chips -->
-                <div>
-                    <span class="text-xs text-slate-400 font-semibold block mb-2">Preguntas frecuentes (haz clic para consultar):</span>
-                    <div class="flex flex-wrap gap-2" id="ai-quick-questions">
-                        <button onclick="askAI('¿Quiénes integran la Directiva y la lista de Consejeros del Cabildo?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                            👥 Integrantes de la Lista 1
-                        </button>
-                        <button onclick="askAI('¿En qué consiste la Escuela Republicana del Bío Bío?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                            🎓 ¿Cómo funciona la Escuela Republicana?
-                        </button>
-                        <button onclick="askAI('¿Cuáles son las propuestas clave para la provincia de Arauco?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                            🌲 Propuestas para Arauco
-                        </button>
-                        <button onclick="askAI('¿Qué se hará en los primeros 100 días de gestión?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                            🗓️ Plan Primeros 100 Días
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Chat Output Area -->
-                <div id="ai-response-box" class="hidden bg-slate-950/80 border border-slate-800 rounded-2xl p-5 text-slate-200 text-sm leading-relaxed max-h-80 overflow-y-auto space-y-3">
-                    <!-- Dynamic Answer Output -->
-                </div>
-
-                <!-- Input Box -->
-                <form id="ai-form" onsubmit="handleAISubmit(event)" class="flex gap-2">
-                    <input type="text" id="ai-input" placeholder="Escribe tu consulta sobre el programa de la Lista 1..." required
-                        class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-repRed transition-colors">
-                    <button type="submit" id="ai-send-btn" class="bg-repRed hover:bg-repRed-dark text-white font-bold px-6 py-3 rounded-xl transition-all flex items-center justify-center gap-2">
-                        <span>Preguntar</span>
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                    </button>
-                </form>
-
-            </div>
-
-        </div>
-    </section>
-
     <!-- Sección Súmate al Equipo / Escuela Republicana -->
     <section id="sumate" class="py-20 bg-repNavy-dark border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -935,14 +866,8 @@
         // Theme Switcher Logic (System Auto + Manual Override)
         function updateThemeIcons(isDark) {
             const desktopIcon = document.getElementById('theme-toggle-icon');
-            const mobileIcon = document.getElementById('theme-toggle-icon-mobile');
-            
-            if (isDark) {
-                if (desktopIcon) desktopIcon.className = "fa-solid fa-sun text-amber-400 text-base";
-                if (mobileIcon) mobileIcon.className = "fa-solid fa-sun text-amber-400 text-base";
-            } else {
-                if (desktopIcon) desktopIcon.className = "fa-solid fa-moon text-slate-700 text-base";
-                if (mobileIcon) mobileIcon.className = "fa-solid fa-moon text-slate-700 text-base";
+            if (desktopIcon) {
+                desktopIcon.className = isDark ? "fa-solid fa-sun text-amber-400 text-base" : "fa-solid fa-moon text-slate-700 text-base";
             }
         }
 
@@ -1250,91 +1175,6 @@
             setTimeout(() => {
                 successMsg.classList.add('hidden');
             }, 6000);
-        }
-
-        // AI Assistant Call using gemini-3-flash-preview
-        async function askAI(question) {
-            document.getElementById('ai-input').value = question;
-            handleAISubmit(new Event('submit'));
-        }
-
-        async function handleAISubmit(e) {
-            if (e) e.preventDefault();
-            
-            const inputEl = document.getElementById('ai-input');
-            const box = document.getElementById('ai-response-box');
-            const sendBtn = document.getElementById('ai-send-btn');
-            const query = inputEl.value.trim();
-
-            if (!query) return;
-
-            box.classList.remove('hidden');
-            box.innerHTML = `
-                <div class="flex items-center gap-2 text-amber-500 dark:text-amber-400 font-semibold text-xs">
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                    <span>Analizando las Bases Programáticas Bío Bío con IA...</span>
-                </div>
-            `;
-            sendBtn.disabled = true;
-
-            const systemPrompt = `Eres el asistente virtual oficial de la Lista 1 "La Voz de la Militancia con Corazón Republicano" del Partido Republicano en la Región del Bío Bío (Concepción, Biobío, Arauco).
-Tu función es responder de manera amable, clara, precisa y entusiasmada a los militantes utilizando la información oficial de las bases programáticas:
-- Directiva Regional:
-  * Presidenta Regional: Yasna Mardones Sáez
-  * Secretario Regional: Luis Santibáñez Bastidas
-  * Tesorera Regional: Erika Román Silva
-  * Vicepresidente 1° Regional: Sebastián Guenante Arancibia
-  * Vicepresidente 2° Regional: Ángelo Millamán López
-- Candidatos a Consejeros del Cabildo (Lista oficial completada):
-  * #2 Ingrid Salazar Mora
-  * #3 Christian Arellano Vera
-  * #4 James Argo Chávez
-  * #6 Jacqueline Delgado Contreras
-  * #7 Eliana Fernández Neira
-  * #10 José Miguel Muñoz Sáez
-  * #11 Jonathan Bedwell Silva
-  * #12 Eduardo Carrillo Neira
-  * #13 César Valenzuela Ramírez
-  * #14 Manuel Pino Contreras
-  * #15 Patricio Torres Bastías
-- 8 Pilares: Presencia Territorial, Formación (Escuela Republicana), Comunicación Clara (Boletín La Voz Republicana), Participación/Democracia, Descentralización Provincial, Coordinación Electoral, Transparencia (Cuenta pública), Mujeres y Jóvenes.
-- Elecciones: 09 de Agosto.
-Sé directo y conciso en máximo 2 a 3 párrafos.`;
-
-            const apiKey = ""; // Canvas runtime environment automatically provides runtime key
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: query }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
-                    })
-                });
-
-                const data = await response.json();
-                const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (reply) {
-                    box.innerHTML = `
-                        <div class="space-y-2">
-                            <div class="font-bold text-amber-500 dark:text-amber-400 text-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-robot"></i> Respuesta Oficial Lista 1:
-                            </div>
-                            <div class="text-slate-800 dark:text-slate-200 text-xs sm:text-sm leading-relaxed whitespace-pre-line">${reply}</div>
-                        </div>
-                    `;
-                } else {
-                    box.innerHTML = `<div class="text-red-500 dark:text-red-400 text-xs">No se pudo obtener respuesta en este momento. Por favor reintenta.</div>`;
-                }
-            } catch (err) {
-                console.error(err);
-                box.innerHTML = `<div class="text-red-500 dark:text-red-400 text-xs">Ocurrió un error de conexión al consultar la IA.</div>`;
-            } finally {
-                sendBtn.disabled = false;
-            }
         }
 
         // Initialize App on Load
