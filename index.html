@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Militancia Biobío | Partido Republicano</title>
+    <title>Lista 1 - La Voz de la Militancia con Corazón Republicano | Partido Republicano Bío Bío</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        republicano: {
-                            navy: '#0B1E38',
-                            blue: '#1E3A8A',
-                            lightBlue: '#2563EB',
-                            red: '#DC2626',
-                            darkRed: '#991B1B',
-                            gold: '#D97706',
-                            grayLight: '#F8FAFC',
-                            grayDark: '#0F172A'
+                        repNavy: {
+                            DEFAULT: '#0B1E36',
+                            dark: '#061120',
+                            light: '#163259',
+                            slate: '#1E40AF'
+                        },
+                        repRed: {
+                            DEFAULT: '#D91023',
+                            dark: '#B00B1A',
+                            light: '#EF233C',
+                            glow: '#FF3B4E'
+                        },
+                        repGold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB'
                         }
                     },
                     fontFamily: {
@@ -34,197 +39,243 @@
                     }
                 }
             }
-        }
+        };
+
+        // Automatic Light/Dark Mode detection and state management
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
     </script>
     <style>
-        .gradient-hero {
-            background: linear-gradient(135deg, #0B1E38 0%, #1E3A8A 60%, #111827 100%);
+        .star-bg {
+            background-image: radial-gradient(circle at 50% 50%, rgba(217, 16, 35, 0.08) 0%, rgba(11, 30, 54, 0) 70%);
         }
-        .gradient-red {
-            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+        .star-bg-light {
+            background-image: radial-gradient(circle at 50% 50%, rgba(217, 16, 35, 0.05) 0%, rgba(241, 245, 249, 0) 70%);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        .glass-dark {
-            background: rgba(11, 30, 56, 0.85);
+            background: rgba(11, 30, 54, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .custom-shadow {
-            box-shadow: 0 10px 30px -5px rgba(11, 30, 56, 0.12);
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(11, 30, 54, 0.08);
+        }
+        .gradient-text-red {
+            background: linear-gradient(135deg, #FF3B4E 0%, #D91023 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-gold {
+            background: linear-gradient(135deg, #FFE259 0%, #FFA751 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-republicano-red selection:text-white">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-repRed selection:text-white transition-colors duration-300">
 
-    <!-- Announcement Topbar -->
-    <div class="bg-republicano-red text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2">
-        <span class="bg-white text-republicano-red px-2 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase">Elecciones Internas</span>
-        <span>¡Militante del Biobío! Unámonos para defender nuestros principios en las 33 comunas.</span>
-        <a href="#votacion" class="underline hover:text-slate-200 font-bold ml-2 hidden md:inline">¿Cómo votar? →</a>
+    <!-- Top Bar Info -->
+    <div class="bg-repRed text-white text-xs py-2 px-4 font-semibold text-center border-b border-repRed-dark flex flex-wrap justify-center items-center gap-2">
+        <span class="bg-white text-repRed px-2 py-0.5 rounded-full text-[10px] uppercase font-black tracking-wider">Elecciones Internas</span>
+        <span>¡ESTE 09 DE AGOSTO VOTA LISTA 1!</span>
+        <span class="hidden md:inline">•</span>
+        <span class="hidden md:inline">Región del Bío Bío (Concepción • Biobío • Arauco)</span>
     </div>
 
-    <!-- Main Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-republicano-navy text-white shadow-xl border-b border-slate-700">
+    <!-- Main Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-repNavy/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-xl transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo Branding -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 bg-republicano-red rounded-lg flex items-center justify-center font-black text-xl text-white shadow-lg group-hover:scale-105 transition-transform">
-                        R
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 rounded-full bg-gradient-to-br from-repRed to-repNavy p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-repNavy rounded-full flex items-center justify-center border border-white/20">
+                            <i class="fa-solid fa-star text-white text-xl"></i>
+                        </div>
                     </div>
-                    <div class="flex flex-col">
-                        <span class="font-extrabold text-lg md:text-xl tracking-tight text-white leading-none">
-                            REPUBLICANOS
-                        </span>
-                        <span class="text-xs font-semibold text-red-400 uppercase tracking-widest mt-1">
-                            Región del Biobío
-                        </span>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-black tracking-widest bg-repRed text-white px-1.5 py-0.5 rounded">LISTA 1</span>
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-300">BÍO BÍO</span>
+                        </div>
+                        <h1 class="text-lg font-black tracking-tight text-slate-900 dark:text-white group-hover:text-repRed-glow transition-colors">
+                            LA VOZ DE LA MILITANCIA
+                        </h1>
                     </div>
                 </a>
 
-                <!-- Desktop Nav -->
-                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
-                    <a href="#inicio" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Inicio</a>
-                    <a href="#lista" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Nuestra Lista</a>
-                    <a href="#ejes" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Ejes de Trabajo</a>
-                    <a href="#comunas" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">33 Comunas</a>
-                    <a href="#materiales" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Descargables</a>
-                    <a href="#agenda" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Agenda</a>
-                    <a href="#faq" class="text-slate-200 hover:text-white hover:text-red-400 transition-colors">Preguntas</a>
-                </nav>
-
-                <!-- Actions -->
-                <div class="hidden sm:flex items-center space-x-3">
-                    <button onclick="shareWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-md transition-all transform hover:-translate-y-0.5">
-                        <i class="fa-brands font-bold fa-whatsapp text-lg"></i>
-                        <span class="hidden md:inline">Compartir</span>
-                    </button>
-                    <a href="#sumate" class="bg-republicano-red hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
-                        <i class="fa-solid fa-user-plus mr-1.5"></i> Súmate
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                    <a href="#principios" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Principios</a>
+                    <a href="#pilares" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">8 Pilares</a>
+                    <a href="#directiva" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Directiva</a>
+                    <a href="#consejeros" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Consejeros Cabildo</a>
+                    <a href="#provincias" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">Provincias</a>
+                    <a href="#100dias" class="text-slate-600 dark:text-slate-300 hover:text-repRed dark:hover:text-white transition-colors">100 Días</a>
+                    <a href="#asistente" class="text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 font-semibold flex items-center gap-1.5">
+                        <i class="fa-solid fa-robot text-xs"></i> Consulta IA
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="lg:hidden text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
-                    <i class="fa-solid fa-bars" id="menuIcon"></i>
-                </button>
+                <!-- CTA & Theme Switcher Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Cambiar modo de color" 
+                        class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400 border border-slate-300 dark:border-slate-700 hover:scale-105 transition-all shadow-sm">
+                        <i id="theme-toggle-icon" class="fa-solid fa-moon text-base"></i>
+                    </button>
+
+                    <a href="#sumate" class="bg-gradient-to-r from-repRed to-repRed-dark hover:from-repRed-light hover:to-repRed text-white font-bold px-5 py-2.5 rounded-xl shadow-lg hover:shadow-repRed/30 transition-all text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-xs"></i>
+                        <span>Sumarme al Equipo</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button & Theme Switcher -->
+                <div class="flex items-center gap-2 lg:hidden">
+                    <button onclick="toggleTheme()" aria-label="Cambiar tema" 
+                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400 border border-slate-300 dark:border-slate-700">
+                        <i id="theme-toggle-icon-mobile" class="fa-solid fa-moon text-base"></i>
+                    </button>
+
+                    <button id="mobile-menu-btn" class="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-republicano-navy border-t border-slate-700 px-4 pt-3 pb-6 space-y-3">
-            <a href="#inicio" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Inicio</a>
-            <a href="#lista" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Nuestra Lista</a>
-            <a href="#ejes" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Ejes de Trabajo</a>
-            <a href="#comunas" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">33 Comunas Biobío</a>
-            <a href="#materiales" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Materiales para Difusión</a>
-            <a href="#agenda" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Agenda Territorial</a>
-            <a href="#faq" onclick="closeMobileMenu()" class="block py-2 text-slate-200 font-medium hover:text-white">Preguntas Frecuentes</a>
-            <div class="pt-4 border-t border-slate-700 flex flex-col gap-2">
-                <button onclick="shareWhatsApp()" class="w-full bg-emerald-600 text-white py-2.5 rounded-lg font-bold flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> Compartir con Militantes
-                </button>
-                <a href="#sumate" onclick="closeMobileMenu()" class="w-full text-center bg-republicano-red text-white py-2.5 rounded-lg font-bold">
-                    Inscribirme como Apoderado
-                </a>
-            </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-repNavy border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#principios" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Principios</a>
+            <a href="#pilares" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">8 Pilares Programáticos</a>
+            <a href="#directiva" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Directiva Regional</a>
+            <a href="#consejeros" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Consejeros Cabildo</a>
+            <a href="#provincias" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Desglose Provincial</a>
+            <a href="#100dias" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Plan 100 Días</a>
+            <a href="#asistente" class="block py-2 text-amber-600 dark:text-amber-400 font-semibold">Asistente IA Militante</a>
+            <a href="#sumate" class="block w-full text-center bg-repRed text-white py-2.5 rounded-xl font-bold mt-2">
+                ¡Sumarme al Equipo!
+            </a>
         </div>
-    </header>
+    </nav>
 
-    <section id="inicio" class="relative gradient-hero text-white overflow-hidden py-16 md:py-24">
-        <!-- Subtle Pattern Overlay -->
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        
+    <!-- Hero Section -->
+    <section id="inicio" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-slate-100 via-slate-50 to-white dark:from-repNavy-dark dark:via-repNavy dark:to-slate-900 star-bg-light dark:star-bg transition-colors duration-300">
+        <!-- Background Accents -->
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-repRed/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Left Hero Column -->
+                <!-- Left Column: Heading & Info -->
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-red-300 text-xs md:text-sm font-semibold tracking-wide">
-                        <i class="fa-solid fa-flag text-republicano-red"></i>
-                        <span>CONCEPCIÓN • BIOBÍO • ARAUCO</span>
+                    <div class="inline-flex items-center gap-2 bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm dark:shadow-inner">
+                        <span class="w-2.5 h-2.5 rounded-full bg-repRed animate-pulse"></span>
+                        <span>Lista 1 • Partido Republicano Región del Bío Bío</span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-                        Unidad, Principios y <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-300">Fuerza Territorial</span> en el Biobío
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+                        LA VOZ DE LA MILITANCIA <br class="hidden sm:inline">
+                        <span class="gradient-text-red">CON CORAZÓN REPUBLICANO</span>
                     </h1>
 
-                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        Bienvenido al portal oficial de difusión y coordinación de militantes. Construimos un Partido Republicano sólido, transparente y conectado con las verdaderas urgencias de las 33 comunas de nuestra región.
+                    <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Una propuesta real para <strong class="text-slate-900 dark:text-white">servir, escuchar y construir</strong> desde las bases en las provincias de <strong class="text-repRed dark:text-repRed-glow">Concepción, Biobío y Arauco</strong>.
                     </p>
 
-                    <!-- Key Metrics Banner -->
-                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-700/80 max-w-lg mx-auto lg:mx-0">
-                        <div class="text-center lg:text-left">
-                            <span class="block text-2xl sm:text-3xl font-black text-amber-400">33</span>
-                            <span class="text-xs text-slate-300 uppercase font-medium">Comunas</span>
+                    <!-- Countdown Box -->
+                    <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/70 rounded-2xl p-4 sm:p-6 max-w-lg mx-auto lg:mx-0 shadow-xl dark:shadow-2xl">
+                        <div class="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 mb-3 flex items-center justify-center lg:justify-start gap-2">
+                            <i class="fa-solid fa-clock text-repRed"></i>
+                            <span>Cuenta Regresiva Elecciones Internas (09 de Agosto)</span>
                         </div>
-                        <div class="text-center lg:text-left">
-                            <span class="block text-2xl sm:text-3xl font-black text-red-400">3</span>
-                            <span class="text-xs text-slate-300 uppercase font-medium">Provincias</span>
-                        </div>
-                        <div class="text-center lg:text-left">
-                            <span class="block text-2xl sm:text-3xl font-black text-blue-400">100%</span>
-                            <span class="text-xs text-slate-300 uppercase font-medium">Compromiso</span>
+                        <div class="grid grid-cols-4 gap-2 text-center" id="countdown">
+                            <div class="bg-slate-100 dark:bg-repNavy p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <span id="cd-days" class="block text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">00</span>
+                                <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Días</span>
+                            </div>
+                            <div class="bg-slate-100 dark:bg-repNavy p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <span id="cd-hours" class="block text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">00</span>
+                                <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Horas</span>
+                            </div>
+                            <div class="bg-slate-100 dark:bg-repNavy p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <span id="cd-mins" class="block text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">00</span>
+                                <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Min</span>
+                            </div>
+                            <div class="bg-slate-100 dark:bg-repNavy p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <span id="cd-secs" class="block text-2xl sm:text-3xl font-black text-repRed dark:text-repRed-glow">00</span>
+                                <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Seg</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Call To Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
-                        <a href="#lista" class="bg-republicano-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-extrabold text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <span>Conoce Nuestra Lista</span>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#pilares" class="w-full sm:w-auto bg-repRed hover:bg-repRed-dark text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-repRed/30 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                            <span>Ver Bases Programáticas</span>
                             <i class="fa-solid fa-arrow-down"></i>
                         </a>
-                        <a href="#votacion" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
-                            <i class="fa-solid fa-check-to-slot text-amber-400"></i>
-                            <span>Guía para Votar</span>
+                        <a href="#directiva" class="w-full sm:w-auto bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-white font-semibold px-8 py-3.5 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Conocer la Lista 1</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Hero Column: Interactive Card -->
+                <!-- Right Column: Card Banner badge -->
                 <div class="lg:col-span-5">
-                    <div class="glass-dark border border-slate-600/60 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
-                        <div class="absolute -top-3 -right-3 bg-amber-500 text-slate-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-lg">
-                            Gran Lista Regional
-                        </div>
-
-                        <div class="flex items-center gap-4 border-b border-slate-700 pb-4 mb-6">
-                            <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl font-black shadow-md">
-                                <i class="fa-solid fa-shield-halved"></i>
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Red/Blue glowing circle -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-repRed via-blue-600 to-repNavy opacity-75 blur-lg"></div>
+                        
+                        <div class="relative bg-white dark:bg-repNavy rounded-3xl p-8 border border-slate-200 dark:border-white/10 shadow-2xl text-center space-y-6">
+                            <div class="w-24 h-24 mx-auto rounded-full bg-repRed flex items-center justify-center border-4 border-white shadow-xl">
+                                <span class="text-4xl font-black text-white">1</span>
                             </div>
+
                             <div>
-                                <h3 class="text-xl font-extrabold text-white">Militancia Unida Biobío</h3>
-                                <p class="text-xs text-slate-300">Partido Republicano de Chile</p>
+                                <span class="inline-block px-3 py-1 bg-repRed/10 dark:bg-repRed/20 border border-repRed/30 dark:border-repRed/40 text-repRed dark:text-repRed-glow text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                                    Vota Lista 1
+                                </span>
+                                <h2 class="text-2xl font-black text-slate-900 dark:text-white">PARTIDO REPUBLICANO</h2>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 font-medium">REGIÓN DEL BÍO BÍO</p>
                             </div>
-                        </div>
 
-                        <div class="space-y-4 mb-6">
-                            <div class="flex items-start gap-3 text-sm text-slate-200">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span><strong>Liderazgo firme:</strong> Dirigentes capacitados con experiencia comprobada en terreno.</span>
+                            <div class="border-t border-slate-200 dark:border-slate-800 pt-4 space-y-2 text-left text-sm text-slate-700 dark:text-slate-300">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-repRed"></i>
+                                    <span>Presencia permanente en las 3 provincias</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-repRed"></i>
+                                    <span>Escuela Republicana del Bío Bío</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-repRed"></i>
+                                    <span>Comunicación fluida y transparente</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-repRed"></i>
+                                    <span>Democracia interna e inclusión de jóvenes y mujeres</span>
+                                </div>
                             </div>
-                            <div class="flex items-start gap-3 text-sm text-slate-200">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span><strong>Presencia en las 3 Provincias:</strong> Representación real para Concepción, Biobío y Arauco.</span>
-                            </div>
-                            <div class="flex items-start gap-3 text-sm text-slate-200">
-                                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                                <span><strong>Formación Doctrinaria:</strong> Capacitación permanente para nuevos militantes e institutos de formación.</span>
-                            </div>
-                        </div>
 
-                        <!-- Quick Vote Banner -->
-                        <div class="bg-slate-900/80 rounded-2xl p-4 border border-slate-700 flex items-center justify-between">
-                            <div>
-                                <span class="text-xs text-slate-400 font-semibold block uppercase">Estado del Proceso</span>
-                                <span class="text-sm font-bold text-amber-300">Convocatoria Activa</span>
+                            <div class="bg-slate-100 dark:bg-slate-900/80 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                                <span class="font-bold text-slate-900 dark:text-white block mb-1">Candidata a Presidenta Regional:</span>
+                                <span class="text-base font-extrabold text-amber-600 dark:text-amber-400">YASNA MARDONES SÁEZ</span>
                             </div>
-                            <button onclick="scrollToSection('sumate')" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors">
-                                Súmate Aquí
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -233,863 +284,1067 @@
         </div>
     </section>
 
-    <section id="lista" class="py-20 bg-slate-100">
+    <!-- Key Stats Strip -->
+    <section class="bg-slate-200/60 dark:bg-repNavy-dark border-y border-slate-300 dark:border-slate-800 py-10 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-republicano-red font-extrabold uppercase text-xs tracking-widest bg-red-100 px-3 py-1 rounded-full">
-                    Candidatos de la Gran Lista
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    Un Equipo Preparado para Servir al Biobío
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Conoce a los líderes republicanos que comprometen su trabajo por la región, la fiscalización de recursos y la articulación con nuestros militantes.
-                </p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none">
+                    <span class="block text-3xl sm:text-4xl font-black text-repRed dark:text-repRed-glow">3</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Provincias Clave (Concepción, Biobío, Arauco)</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none">
+                    <span class="block text-3xl sm:text-4xl font-black text-amber-600 dark:text-amber-400">8</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Pilares Programáticos Estratégicos</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none">
+                    <span class="block text-3xl sm:text-4xl font-black text-blue-600 dark:text-blue-400">100</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Días Plan de Gestión Inicial</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none">
+                    <span class="block text-3xl sm:text-4xl font-black text-emerald-600 dark:text-emerald-400">24</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Compromisos Verificables</span>
+                </div>
             </div>
-
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-10" id="candidateTabs">
-                <button onclick="filterCandidates('todos')" class="tab-btn active bg-republicano-navy text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all">
-                    Todos los Líderes
-                </button>
-                <button onclick="filterCandidates('directiva')" class="tab-btn bg-white text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl font-bold text-sm transition-all">
-                    Directiva Regional
-                </button>
-                <button onclick="filterCandidates('concepcion')" class="tab-btn bg-white text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl font-bold text-sm transition-all">
-                    Provincia Concepción
-                </button>
-                <button onclick="filterCandidates('biobio')" class="tab-btn bg-white text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl font-bold text-sm transition-all">
-                    Provincia Biobío
-                </button>
-                <button onclick="filterCandidates('arauco')" class="tab-btn bg-white text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl font-bold text-sm transition-all">
-                    Provincia Arauco
-                </button>
-            </div>
-
-            <!-- Candidates Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="candidatesGrid">
-                <!-- Dynamic Content Rendered by JS -->
-            </div>
-
         </div>
     </section>
 
-    <section id="ejes" class="py-20 bg-white">
+    <!-- Principios Fundamentales -->
+    <section id="principios" class="py-20 bg-slate-50 dark:bg-slate-900 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-republicano-blue font-extrabold uppercase text-xs tracking-widest bg-blue-100 px-3 py-1 rounded-full">
-                    Propuestas Clave
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-repRed dark:text-repRed-glow bg-repRed/10 px-3 py-1 rounded-full border border-repRed/20">
+                    Nuestra Convicción
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    Nuestros 5 Ejes de Gestión Regional
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Un plan de acción concreto con fechas y compromisos para transformar la presencia republicana en el Biobío.
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">PRINCIPIOS QUE ORIENTAN NUESTRA GESTIÓN</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-base">
+                    No ofrecemos una suma de buenas intenciones. Presentamos una forma de trabajo con responsables, plazos, seguimiento y rendición de cuentas.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Pillar 1 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-red-500 transition-all shadow-sm hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-republicano-red text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                <!-- Principle 1 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed/10 dark:bg-repRed/20 border border-repRed/30 dark:border-repRed/40 flex items-center justify-center text-repRed dark:text-repRed-glow mb-4 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">1. Unidad con Participación</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Trabajar juntos no significa pensar todos igual, sino escucharnos y avanzar con respeto para construir un partido amplio y sólido.
+                    </p>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/30 dark:border-blue-500/40 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">2. Servicio Permanente</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        La presencia territorial debe responder a una vocación genuina de ayuda y compromiso comunitario durante todo el año.
+                    </p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4 text-xl group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-map-location-dot"></i>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-3">1. Presencia en las 33 Comunas</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Creación de cabildos y comunales activos en cada comuna desde Concepción hasta Tirúa y Alto Biobío. Sin dejar a ningún militante aislado.
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">3. Descentralización</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Cada provincia y comuna (Concepción, Biobío y Arauco) debe contar, participar y tener oportunidades de desarrollo y liderazgos.
                     </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Visitas mensuales de la directiva</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Encargado comunal en cada municipio</li>
-                    </ul>
                 </div>
 
-                <!-- Pillar 2 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-blue-500 transition-all shadow-sm hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-republicano-blue text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-graduation-cap"></i>
+                <!-- Principle 4 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-award"></i>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-3">2. Escuela Doctrinaria Regional</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Programa continuo de capacitaciones en principios republicanos, gestión pública, fiscalización municipal y vocería para líderes jóvenes y militantes.
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">4. Mérito y Apertura</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Reconocer el trabajo realizado y abrir espacios reales a quienes quieran aportar con responsabilidad y compromiso sin favoritismos.
                     </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Talleres presenciales y remotos</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Certificación para apoderados de mesa</li>
-                    </ul>
                 </div>
 
-                <!-- Pillar 3 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-amber-500 transition-all shadow-sm hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-amber-700 text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-shield-cat"></i>
+                <!-- Principle 5 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 dark:bg-purple-500/20 border border-purple-500/30 dark:border-purple-500/40 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-eye"></i>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-3">3. Seguridad y Estado de Derecho</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Defensa irrestricta de los vecinos, apoyo a víctimas de violencia en la Provincia de Arauco y exigencia de mano dura contra el crimen organizado y terrorismo.
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">5. Transparencia</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Informar lo que se hace, explicar las decisiones institucionales y rendir cuentas periódicas a toda la militancia.
                     </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Red de apoyo jurídico a militantes</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Observatorio regional de seguridad</li>
-                    </ul>
                 </div>
 
-                <!-- Pillar 4 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-emerald-500 transition-all shadow-sm hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700 text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-chart-line"></i>
+                <!-- Principle 6 -->
+                <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 hover:border-repRed/50 transition-all hover:-translate-y-1 shadow-md dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 dark:bg-red-500/20 border border-red-500/30 dark:border-red-500/40 flex items-center justify-center text-red-600 dark:text-red-400 mb-4 text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-3">4. Transparencia y Cuentas Claras</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Publicación periódica del estado financiero regional y rendición de cuentas trimestral ante la asamblea de militantes.
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">6. Coherencia Republicana</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Actuar siempre de acuerdo con nuestros principios doctrinarios, cuidando la integridad del partido y fortaleciendo su unidad.
                     </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Portal de transparencia interna</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Balance público de aportes y gastos</li>
-                    </ul>
-                </div>
-
-                <!-- Pillar 5 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-purple-500 transition-all shadow-sm hover:shadow-xl group md:col-span-2 lg:col-span-1">
-                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-700 text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-hands-holding-child"></i>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-3">5. Respaldo Total a Electos</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Acompañamiento técnico y político continuo a nuestros Diputados, Cores, Alcaldes y Concejales del Partido Republicano en el Biobío.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-200 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Asesoría en proyectos comunales</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Equipo de respuesta rápida territorial</li>
-                    </ul>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="comunas" class="py-20 bg-slate-900 text-white relative">
+    <!-- 8 Pilares Programáticos -->
+    <section id="pilares" class="py-20 bg-slate-100 dark:bg-repNavy-dark border-t border-slate-200 dark:border-slate-800 transition-colors relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-amber-400 font-extrabold uppercase text-xs tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
-                    Despliegue Territorial
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                    Bases Programáticas
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">
-                    Presencia Activa en las 3 Provincias del Biobío
-                </h2>
-                <p class="text-slate-400 mt-3 text-base">
-                    Haz clic en cualquiera de las 33 comunas para revisar nuestro coordinador asignado y la red de militantes locales.
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">LOS 8 PILARES DE LA LISTA 1</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-base">
+                    Haz clic en cada pilar para explorar el objetivo, las líneas de acción concretas y los compromisos verificables para la Región del Bío Bío.
                 </p>
             </div>
 
-            <!-- Province Selector Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <button onclick="filterComunas('concepcion')" id="prov-concepcion-btn" class="prov-btn bg-republicano-red text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all">
-                    Provincia de Concepción (12 Comunas)
-                </button>
-                <button onclick="filterComunas('biobio')" id="prov-biobio-btn" class="prov-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-6 py-3 rounded-xl font-bold text-sm transition-all">
-                    Provincia del Biobío (14 Comunas)
-                </button>
-                <button onclick="filterComunas('arauco')" id="prov-arauco-btn" class="prov-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-6 py-3 rounded-xl font-bold text-sm transition-all">
-                    Provincia de Arauco (7 Comunas)
-                </button>
+            <!-- Pillars Navigation Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="pillar-tabs">
+                <!-- Tab Buttons will be rendered by JavaScript -->
             </div>
 
-            <!-- Comunas Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3" id="comunasGrid">
-                <!-- Populated via JS -->
+            <!-- Active Pillar Detail Card Container -->
+            <div id="pillar-content" class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-10 shadow-xl dark:shadow-2xl transition-all">
+                <!-- Dynamic Content Rendered Here -->
+            </div>
+        </div>
+    </section>
+
+            <!-- Directiva Cards with Light/Dark Support -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Presidenta Regional -->
+                <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border-2 border-repRed/60 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-repRed transition-all">
+                    <div class="absolute top-3 right-3 bg-repRed text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                        Presidencia
+                    </div>
+                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-repRed flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
+                        YM
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 dark:text-white">YASNA MARDONES SÁEZ</h3>
+                    <p class="text-repRed dark:text-repRed-glow font-bold text-sm mb-4">Presidenta Regional Bío Bío</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                        Liderando una gestión cercana, transparente y convocante para dar respuesta a las demandas territoriales de la militancia republicana.
+                    </p>
+                </div>
+
+                <!-- Secretario Regional -->
+                <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
+                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-blue-500 flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
+                        LS
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 dark:text-white">LUIS SANTIBAÑEZ BASTIDAS</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-bold text-sm mb-4">Secretario Regional Bío Bío</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                        Aportando capacidad organizativa, canales institucionales claros e información fluida a cada comuna y cabildo.
+                    </p>
+                </div>
+
+                <!-- Tesorera Regional -->
+                <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
+                    <div class="w-28 h-28 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-emerald-500 flex items-center justify-center text-slate-800 dark:text-white text-3xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
+                        ER
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 dark:text-white">ERIKA ROMÁN SILVA</h3>
+                    <p class="text-emerald-600 dark:text-emerald-400 font-bold text-sm mb-4">Tesorera Regional Bío Bío</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                        Garantizando una gestión transparente, responsable y con rendición periódica de cuentas ante la militancia.
+                    </p>
+                </div>
+
+                <!-- Vicepresidente 1 -->
+                <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-amber-500 flex items-center justify-center text-slate-800 dark:text-white text-2xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
+                        SG
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">SEBASTIÁN GUENANTE ARANCIBIA</h3>
+                    <p class="text-amber-600 dark:text-amber-400 font-bold text-xs mb-4">Vicepresidente 1° Regional</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                        Coordinación directa para el desarrollo provincial y articulación de equipos comunales.
+                    </p>
+                </div>
+
+                <!-- Vicepresidente 2 -->
+                <div class="bg-gradient-to-b from-white to-slate-100 dark:from-slate-800 dark:to-repNavy border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-lg dark:shadow-xl relative overflow-hidden group hover:border-slate-400 dark:hover:border-slate-500 transition-all">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 border-4 border-purple-500 flex items-center justify-center text-slate-800 dark:text-white text-2xl font-black my-4 shadow-lg group-hover:scale-105 transition-transform">
+                        AM
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">ÁNGELO MILLAMÁN LÓPEZ</h3>
+                    <p class="text-purple-600 dark:text-purple-400 font-bold text-xs mb-4">Vicepresidente 2° Regional</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700/80 pt-4">
+                        Comprometido con el impulso a las nuevas generaciones, formación y vocación de servicio territorial.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Consejeros del Cabildo -->
+    <section id="consejeros" class="py-20 bg-slate-100 dark:bg-repNavy-dark border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                    Candidatos al Cabildo
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">CANDIDATOS A CONSEJEROS DEL CABILDO</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-base">
+                    Liderazgos territoriales comprometidos con fiscalizar, orientar y representar las voces de toda la Región del Bío Bío.
+                </p>
             </div>
 
-            <!-- Comuna Detail Modal Box -->
-            <div id="comunaDetailBox" class="mt-8 bg-slate-800/90 border border-slate-700 rounded-2xl p-6 hidden">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <!-- Consejeros Grid -->
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        2
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">INGRID SALAZAR MORA</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        3
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">CHRISTIAN ARELLANO VERA</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        4
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">JAMES ARGO CHÁVEZ</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        6
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">JACQUELINE DELGADO CONTRERAS</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        7
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">ELIANA FERNÁNDEZ NEIRA</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejera del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        10
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">JOSÉ MIGUEL MUÑOZ SÁEZ</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        11
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">JONATHAN BEDWELL SILVA</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        12
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">EDUARDO CARRILLO NEIRA</h4>
+                    <span class="text-[11px] text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        13
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">CÉSAR VALENZUELA RAMÍREZ</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        14
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">MANUEL PINO CONTRERAS</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center hover:border-repRed transition-all hover:-translate-y-1 shadow-sm dark:shadow-none group">
+                    <div class="w-12 h-12 rounded-xl bg-repRed text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                        15
+                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">PATRICIO TORRES BASTÍAS</h4>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Consejero del Cabildo</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Provincias del Bío Bío -->
+    <section id="provincias" class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">
+                    Descentralización Efectiva
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">PLAN TERRITORIAL POR PROVINCIA</h2>
+                <p class="text-slate-400 text-base">
+                    Bío Bío no es sólo Concepción. La Lista 1 impulsa una gestión itinerante con presencia activa en las tres provincias.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Concepción -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-8 flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
-                        <span id="detailProvincia" class="text-xs text-amber-400 font-bold uppercase tracking-wider"></span>
-                        <h3 id="detailComunaName" class="text-2xl font-black text-white"></h3>
-                        <p id="detailCoordinator" class="text-slate-300 text-sm mt-1"></p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-black uppercase tracking-wider bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">Provincia 1</span>
+                            <i class="fa-solid fa-city text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">CONCEPCIÓN</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                            Fortalecimiento de comunas urbanas y periféricas, articulación de cabildos, mesas de formación técnica e integración de jóvenes profesionales.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2.5">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Coordinación comunal activa y periódica</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Escuela de Apoderados y Formación Politécnica</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Encuentros temáticos de seguridad y desarrollo</span>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="#sumate" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wide flex items-center gap-2">
-                        <i class="fa-solid fa-hand-point-up"></i> Contactar Coordinación Local
-                    </a>
                 </div>
-            </div>
 
+                <!-- Biobío -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500/50 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-black uppercase tracking-wider bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full">Provincia 2</span>
+                            <i class="fa-solid fa-wheat-awn text-2xl text-amber-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">BIOBÍO</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                            Atención prioritaria al desarrollo agrícola, ruralidad, conectividad y acompañamiento estrecho a los equipos locales de Los Ángeles y comunas cordilleranas.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2.5">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Mesa provincial periódica descentralizada</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Formación presencial e híbrida adaptada</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Atención al empleo rural y desarrollo productivo</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Arauco -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-8 flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full">Provincia 3</span>
+                            <i class="fa-solid fa-tree text-2xl text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">ARAUCO</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                            Presencia permanente en terreno, apoyo ante emergencias, fortalecimiento comunitario y respaldo firme a la seguridad y desarrollo local.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2.5">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Operativos de servicio comunitario constante</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Apoyo integral a la militancia de Arauco</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-repRed"></i>
+                                <span>Canales directos sin trabas ni centralismos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <section id="votacion" class="py-20 bg-white">
+    <!-- Plan Primeros 100 Días -->
+    <section id="100dias" class="py-20 bg-repNavy-dark border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-republicano-red font-extrabold uppercase text-xs tracking-widest bg-red-100 px-3 py-1 rounded-full">
-                    Paso a Paso
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-repRed-glow bg-repRed/10 px-3 py-1 rounded-full border border-repRed/20">
+                    De las Palabras a la Acción
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    ¿Cómo Participar y Votar en la Elección Interna?
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Tu voto fortalece el partido y asegura que la Región del Biobío sea escuchada a nivel nacional.
+                <h2 class="text-3xl sm:text-4xl font-black text-white">HOJA DE RUTA: PRIMEROS 100 DÍAS</h2>
+                <p class="text-slate-400 text-base">
+                    La gestión comenzará de inmediato con señales claras de organización, presencia, escucha activa y transparencia institucional.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-4 gap-6">
+                
                 <!-- Step 1 -->
-                <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="w-10 h-10 bg-republicano-navy text-white rounded-xl flex items-center justify-center font-black text-lg mb-4">
-                        1
-                    </div>
-                    <h3 class="font-extrabold text-slate-900 text-lg mb-2">Verifica tu Militancia</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Asegúrate de estar inscrito legalmente en el Partido Republicano en la Región del Biobío mediante la consulta en la web del Servel.
+                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 relative">
+                    <div class="text-xs font-black text-repRed-glow uppercase tracking-widest mb-1">Días 0 - 30</div>
+                    <h3 class="text-lg font-bold text-white mb-3">1. Organización</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Definir responsables provinciales, habilitar canales oficiales, levantar directorio comunal y publicar el calendario inicial de actividades.
                     </p>
+                    <span class="inline-block text-[10px] bg-slate-700/80 text-slate-300 px-2.5 py-1 rounded-md font-semibold">
+                        Prioridad Estructural
+                    </span>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="w-10 h-10 bg-republicano-red text-white rounded-xl flex items-center justify-center font-black text-lg mb-4">
-                        2
-                    </div>
-                    <h3 class="font-extrabold text-slate-900 text-lg mb-2">Ubicación del Local</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Revisa la sede o local oficial habilitado en tu comuna (Concepción, Los Ángeles, Lebu, San Pedro, etc.) o la modalidad virtual asignada.
+                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 relative">
+                    <div class="text-xs font-black text-blue-400 uppercase tracking-widest mb-1">Días 31 - 60</div>
+                    <h3 class="text-lg font-bold text-white mb-3">2. Participación</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Realizar encuentros provinciales de diagnóstico en terreno, recibir propuestas comunitarias e implementar planes básicos por provincia.
                     </p>
+                    <span class="inline-block text-[10px] bg-slate-700/80 text-slate-300 px-2.5 py-1 rounded-md font-semibold">
+                        Escucha Territorial
+                    </span>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="w-10 h-10 bg-amber-600 text-white rounded-xl flex items-center justify-center font-black text-lg mb-4">
-                        3
-                    </div>
-                    <h3 class="font-extrabold text-slate-900 text-lg mb-2">Lleva tu Cédula</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Es indispensable presentar tu Cédula de Identidad chilena vigente para validar tu derecho a voto ante los apoderados.
+                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 relative">
+                    <div class="text-xs font-black text-amber-400 uppercase tracking-widest mb-1">Días 61 - 90</div>
+                    <h3 class="text-lg font-bold text-white mb-3">3. Formación & Equipos</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Iniciar la Escuela Republicana del Bío Bío, constituir equipos territorial, programático y electoral, y levantar el registro voluntario de capacidades.
                     </p>
+                    <span class="inline-block text-[10px] bg-slate-700/80 text-slate-300 px-2.5 py-1 rounded-md font-semibold">
+                        Capacitación & Acción
+                    </span>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="relative bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="w-10 h-10 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-black text-lg mb-4">
-                        4
-                    </div>
-                    <h3 class="font-extrabold text-slate-900 text-lg mb-2">Marca la Gran Lista</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Marca la opción de la Lista Regional Unida por el Biobío para dar continuidad a un trabajo con principios y fuerza territorial.
+                <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 relative">
+                    <div class="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">Días 91 - 100</div>
+                    <h3 class="text-lg font-bold text-white mb-3">4. Rendición de Cuentas</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Publicar el primer informe trimestral de avance, compromisos cumplidos, dificultades encontradas y planificación del siguiente período.
                     </p>
-                </div>
-            </div>
-
-            <!-- Servel Link Box -->
-            <div class="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-6 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-xl font-bold shrink-0">
-                        <i class="fa-solid fa-id-card"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-extrabold text-blue-950 text-base">Consulta de Afiliación en el SERVEL</h4>
-                        <p class="text-xs text-blue-800">Verifica tu certificado de afiliación política para el proceso de votación.</p>
-                    </div>
-                </div>
-                <a href="https://consulta.servel.cl/" target="_blank" rel="noopener noreferrer" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-5 py-3 rounded-xl transition-colors whitespace-nowrap">
-                    Ir al Sitio de SERVEL <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="materiales" class="py-20 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-emerald-700 font-extrabold uppercase text-xs tracking-widest bg-emerald-100 px-3 py-1 rounded-full">
-                    Difusión Digital
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    Materiales para Difundir en WhatsApp y Redes
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Descarga minutas, gráficas oficiales y afiches para compartir en tus grupos comunales y activar a otros militantes.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Material Item 1 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-red-100 text-republicano-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-file-pdf"></i>
-                        </div>
-                        <h3 class="font-extrabold text-slate-900 text-lg">Plan de Trabajo Biobío 2026-2028</h3>
-                        <p class="text-slate-500 text-xs mt-2">Documento oficial con las propuestas y compromisos detallados por provincia.</p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">PDF • 2.4 MB</span>
-                        <button onclick="downloadMock('Plan_de_Trabajo_Republicano_Biobio.pdf')" class="text-xs bg-republicano-navy hover:bg-slate-800 text-white font-bold px-4 py-2 rounded-lg transition-colors">
-                            <i class="fa-solid fa-download mr-1"></i> Descargar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Material Item 2 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <h3 class="font-extrabold text-slate-900 text-lg">Pack de Imágenes para WhatsApp</h3>
-                        <p class="text-slate-500 text-xs mt-2">Afiches optimizados para estados de WhatsApp y grupos comunales del partido.</p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">ZIP • 12 MB</span>
-                        <button onclick="downloadMock('Pack_Grafico_WhatsApp_Biobio.zip')" class="text-xs bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2 rounded-lg transition-colors">
-                            <i class="fa-solid fa-download mr-1"></i> Descargar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Material Item 3 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-book"></i>
-                        </div>
-                        <h3 class="font-extrabold text-slate-900 text-lg">Manual del Apoderado de Mesa</h3>
-                        <p class="text-slate-500 text-xs mt-2">Guía paso a paso para la defensa del voto e instrucciones el día de la elección.</p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">PDF • 1.8 MB</span>
-                        <button onclick="downloadMock('Manual_Apoderado_Biobio.pdf')" class="text-xs bg-amber-600 hover:bg-amber-700 text-white font-bold px-4 py-2 rounded-lg transition-colors">
-                            <i class="fa-solid fa-download mr-1"></i> Descargar
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="agenda" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-republicano-blue font-extrabold uppercase text-xs tracking-widest bg-blue-100 px-3 py-1 rounded-full">
-                    Actividades en Terreno
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    Próximos Encuentros Regionales
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Acompáñanos en las reuniones de coordinación comunales y capacitaciones presenciales.
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto space-y-4">
-                
-                <!-- Event 1 -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-republicano-blue transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-republicano-navy text-white p-3 rounded-xl text-center min-w-[70px]">
-                            <span class="block text-xs font-bold uppercase tracking-wider text-red-400">SÁB</span>
-                            <span class="block text-xl font-black">15</span>
-                            <span class="block text-[10px] uppercase text-slate-300">AGO</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-red-600 uppercase">Provincia de Concepción</span>
-                            <h4 class="font-extrabold text-slate-900 text-base">Encuentro de Militantes - Gran Concepción</h4>
-                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Sede Central Concepción | 18:00 hrs</p>
-                        </div>
-                    </div>
-                    <button onclick="confirmEvent('Encuentro Gran Concepción')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition-colors shrink-0">
-                        <i class="fa-regular fa-calendar-check mr-1"></i> Confirmar Asistencia
-                    </button>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-republicano-blue transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-republicano-navy text-white p-3 rounded-xl text-center min-w-[70px]">
-                            <span class="block text-xs font-bold uppercase tracking-wider text-red-400">JUE</span>
-                            <span class="block text-xl font-black">20</span>
-                            <span class="block text-[10px] uppercase text-slate-300">AGO</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-amber-600 uppercase">Provincia del Biobío</span>
-                            <h4 class="font-extrabold text-slate-900 text-base">Gira Territorial Los Ángeles y Comunas Vecinas</h4>
-                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Centro de Eventos Los Ángeles | 19:00 hrs</p>
-                        </div>
-                    </div>
-                    <button onclick="confirmEvent('Gira Los Ángeles')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition-colors shrink-0">
-                        <i class="fa-regular fa-calendar-check mr-1"></i> Confirmar Asistencia
-                    </button>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-republicano-blue transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-republicano-navy text-white p-3 rounded-xl text-center min-w-[70px]">
-                            <span class="block text-xs font-bold uppercase tracking-wider text-red-400">SÁB</span>
-                            <span class="block text-xl font-black">22</span>
-                            <span class="block text-[10px] uppercase text-slate-300">AGO</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-emerald-600 uppercase">Provincia de Arauco</span>
-                            <h4 class="font-extrabold text-slate-900 text-base">Reunión de Coordinación Lebu, Arauco y Cañete</h4>
-                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Cañete Centro | 11:00 hrs</p>
-                        </div>
-                    </div>
-                    <button onclick="confirmEvent('Reunión Provincia de Arauco')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition-colors shrink-0">
-                        <i class="fa-regular fa-calendar-check mr-1"></i> Confirmar Asistencia
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="sumate" class="py-20 gradient-hero text-white relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="bg-slate-900/90 border border-slate-700 p-8 sm:p-12 rounded-3xl shadow-2xl backdrop-blur-md">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-red-400 font-extrabold uppercase text-xs tracking-widest bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
-                        Red de Apoyo Regional
+                    <span class="inline-block text-[10px] bg-slate-700/80 text-slate-300 px-2.5 py-1 rounded-md font-semibold">
+                        Transparencia Total
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">
-                        ¡Súmate como Apoderado o Voluntario!
-                    </h2>
-                    <p class="text-slate-300 text-sm mt-2">
-                        Queremos contar contigo en tu comuna. Completa este formulario y un coordinador territorial te contactará de inmediato.
-                    </p>
                 </div>
 
-                <form id="volunteerForm" onsubmit="submitVolunteer(event)" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Nombre Completo *</label>
-                            <input type="text" id="volName" required placeholder="Ej: Maria González" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- Asistente Virtual de la Militancia -->
+    <section id="asistente" class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-gradient-to-br from-repNavy via-slate-800 to-repNavy border border-slate-700/90 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+                
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-700/80 pb-6">
+                    <div class="flex items-center gap-4 text-center sm:text-left">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-900 text-2xl shadow-lg font-black">
+                            <i class="fa-solid fa-robot"></i>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="volPhone" required placeholder="+56 9 1234 5678" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                            <h3 class="text-2xl font-black text-white">Asistente IA - Lista 1</h3>
+                            <p class="text-xs text-slate-300">Resuelve cualquier duda sobre las Bases Programáticas Bío Bío en tiempo real.</p>
                         </div>
                     </div>
+                    <span class="text-xs bg-amber-400/10 border border-amber-400/30 text-amber-400 font-bold px-3 py-1.5 rounded-full flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                        Gemini 3 Flash Powered
+                    </span>
+                </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Comuna de Residencia *</label>
-                            <select id="volComuna" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-500">
-                                <option value="" disabled selected>Selecciona tu comuna</option>
-                                <option value="Concepción">Concepción</option>
-                                <option value="Talcahuano">Talcahuano</option>
-                                <option value="San Pedro de la Paz">San Pedro de la Paz</option>
-                                <option value="Los Ángeles">Los Ángeles</option>
-                                <option value="Chillán/Arauco">Arauco</option>
-                                <option value="Chillán/Lebu">Lebu</option>
-                                <option value="Cañete">Cañete</option>
-                                <option value="Coronel">Coronel</option>
-                                <option value="Chiguayante">Chiguayante</option>
-                                <option value="Hualpén">Hualpén</option>
-                                <option value="Otra">Otra comuna del Biobío</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2">¿Cómo deseas colaborar?</label>
-                            <select id="volRole" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-500">
-                                <option value="Apoderado de Mesa">Apoderado de Mesa el día de la votación</option>
-                                <option value="Difusión Digital">Difusión Digital en Redes / WhatsApp</option>
-                                <option value="Coordinador Comunal">Coordinación de Comunal</option>
-                                <option value="Movilización">Apoyo en Transporte y Logística</option>
-                            </select>
-                        </div>
+                <!-- Suggested Questions Chips -->
+                <div>
+                    <span class="text-xs text-slate-400 font-semibold block mb-2">Preguntas frecuentes (haz clic para consultar):</span>
+                    <div class="flex flex-wrap gap-2" id="ai-quick-questions">
+                        <button onclick="askAI('¿Quiénes integran la Directiva y la lista de Consejeros del Cabildo?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                            👥 Integrantes de la Lista 1
+                        </button>
+                        <button onclick="askAI('¿En qué consiste la Escuela Republicana del Bío Bío?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                            🎓 ¿Cómo funciona la Escuela Republicana?
+                        </button>
+                        <button onclick="askAI('¿Cuáles son las propuestas clave para la provincia de Arauco?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                            🌲 Propuestas para Arauco
+                        </button>
+                        <button onclick="askAI('¿Qué se hará en los primeros 100 días de gestión?')" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                            🗓️ Plan Primeros 100 Días
+                        </button>
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 uppercase mb-2">Comentario o Mensaje (Opcional)</label>
-                        <textarea id="volMessage" rows="3" placeholder="Escribe aquí si tienes disponibilidad específica o consultas..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500"></textarea>
-                    </div>
+                <!-- Chat Output Area -->
+                <div id="ai-response-box" class="hidden bg-slate-950/80 border border-slate-800 rounded-2xl p-5 text-slate-200 text-sm leading-relaxed max-h-80 overflow-y-auto space-y-3">
+                    <!-- Dynamic Answer Output -->
+                </div>
 
-                    <button type="submit" class="w-full bg-republicano-red hover:bg-red-700 text-white font-extrabold py-4 rounded-xl text-base shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Enviar Inscripción</span>
+                <!-- Input Box -->
+                <form id="ai-form" onsubmit="handleAISubmit(event)" class="flex gap-2">
+                    <input type="text" id="ai-input" placeholder="Escribe tu consulta sobre el programa de la Lista 1..." required
+                        class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-repRed transition-colors">
+                    <button type="submit" id="ai-send-btn" class="bg-repRed hover:bg-repRed-dark text-white font-bold px-6 py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                        <span>Preguntar</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
                     </button>
                 </form>
 
-                <!-- Confirmation Alert Box -->
-                <div id="formSuccessAlert" class="hidden mt-6 bg-emerald-900/80 border border-emerald-500 text-emerald-200 p-4 rounded-xl text-center text-sm font-semibold">
-                    <i class="fa-solid fa-circle-check text-xl block mb-1"></i>
-                    ¡Gracias por tu compromiso! Hemos recibido tus datos y te contactaremos a la brevedad por WhatsApp.
-                </div>
             </div>
 
         </div>
     </section>
 
-    <section id="faq" class="py-20 bg-slate-100">
+    <!-- Sección Súmate al Equipo / Escuela Republicana -->
+    <section id="sumate" class="py-20 bg-repNavy-dark border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-republicano-red font-extrabold uppercase text-xs tracking-widest bg-red-100 px-3 py-1 rounded-full">
-                    Resolución de Dudas
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
-                    Preguntas Frecuentes
-                </h2>
-                <p class="text-slate-600 mt-3 text-base">
-                    Todo lo que necesitas saber antes de la jornada electoral interna del partido.
-                </p>
-            </div>
-
-            <div class="space-y-4" id="faqAccordion">
+            <div class="bg-slate-800/90 border border-slate-700 rounded-3xl p-8 sm:p-12 shadow-2xl text-center space-y-6">
                 
-                <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-extrabold text-slate-900 text-base flex justify-between items-center focus:outline-none">
-                        <span>¿Quiénes están habilitados para votar?</span>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faq-icon-1"></i>
-                    </button>
-                    <div id="faq-body-1" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Todos aquellos militantes inscritos en el Partido Republicano en cualquiera de las 33 comunas de la Región del Biobío que figuren en el padrón electoral verificado por el Servicio Electoral (SERVEL).
-                    </div>
+                <div class="w-16 h-16 rounded-full bg-repRed/20 border border-repRed/40 text-repRed-glow text-3xl flex items-center justify-center mx-auto">
+                    <i class="fa-solid fa-heart"></i>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-extrabold text-slate-900 text-base flex justify-between items-center focus:outline-none">
-                        <span>¿Cómo me inscribo para ser Apoderado de Mesa?</span>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faq-icon-2"></i>
-                    </button>
-                    <div id="faq-body-2" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Puedes inscribirte directamente en nuestro formulario superior en la sección "Súmate". Te enviaremos el manual oficial de apoderados y la capacitación remota correspondiente.
-                    </div>
-                </div>
+                <h2 class="text-3xl font-black text-white">SÚMATE A LA VOZ DE LA MILITANCIA</h2>
+                <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+                    Queremos construir un partido presente, capacitado y con espacios reales para todos. Inscríbete en la <strong>Escuela Republicana del Bío Bío</strong> o intégrate a los equipos de trabajo comunal y voluntariado.
+                </p>
 
-                <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-extrabold text-slate-900 text-base flex justify-between items-center focus:outline-none">
-                        <span>¿Qué documentos debo presentar el día del proceso?</span>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faq-icon-3"></i>
-                    </button>
-                    <div id="faq-body-3" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Solo debes llevar tu Cédula de Identidad física (carnet chileno) original. Se aceptan cédulas vencidas según la regulación vigente fijada por el TRICEL / SERVEL para elecciones internas.
+                <form id="volunteer-form" onsubmit="handleVolunteerSubmit(event)" class="grid sm:grid-cols-2 gap-4 text-left pt-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nombre Completo *</label>
+                        <input type="text" required placeholder="Ej: Juan Pérez" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-repRed">
                     </div>
-                </div>
 
-                <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button onclick="toggleFaq(4)" class="w-full p-5 text-left font-extrabold text-slate-900 text-base flex justify-between items-center focus:outline-none">
-                        <span>¿Cómo me contacto con el coordinador de mi provincia?</span>
-                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faq-icon-4"></i>
-                    </button>
-                    <div id="faq-body-4" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Puedes ir a la sección "33 Comunas", seleccionar tu comuna y presionar el botón de contacto para escribirle directamente al enlace territorial asignado por la directiva.
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Teléfono / WhatsApp *</label>
+                        <input type="tel" required placeholder="+56 9 1234 5678" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-repRed">
                     </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Provincia / Comuna *</label>
+                        <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-repRed">
+                            <option value="">Selecciona tu comuna...</option>
+                            <option value="Concepción">Concepción</option>
+                            <option value="Talcahuano">Talcahuano</option>
+                            <option value="San Pedro de la Paz">San Pedro de la Paz</option>
+                            <option value="Chiguayante">Chiguayante</option>
+                            <option value="Coronel">Coronel</option>
+                            <option value="Lota">Lota</option>
+                            <option value="Los Ángeles">Los Ángeles (Biobío)</option>
+                            <option value="Arauco">Arauco</option>
+                            <option value="Cañete">Cañete</option>
+                            <option value="Otra Comuna">Otra Comuna Bío Bío</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Área de Interés *</label>
+                        <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-repRed">
+                            <option value="Escuela Republicana">Escuela Republicana (Formación)</option>
+                            <option value="Acción Territorial">Acción Territorial & Voluntariado</option>
+                            <option value="Apoderados de Mesa">Apoderados de Mesa & Equipo Electoral</option>
+                            <option value="Comunicaciones">Comunicaciones & Redes Sociales</option>
+                            <option value="Jóvenes / Mujeres">Juventud y Mujeres Republicanas</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2 pt-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-repRed to-repRed-dark hover:from-repRed-light hover:to-repRed text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Enviar Registro de Militante</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="form-success-msg" class="hidden bg-emerald-950/80 border border-emerald-700 text-emerald-200 p-4 rounded-xl text-xs font-semibold">
+                    ¡Gracias por tu compromiso! Tus datos han sido recibidos. Un coordinador territorial se pondrá en contacto contigo a la brevedad.
                 </div>
 
             </div>
-
         </div>
     </section>
 
-    <footer class="bg-republicano-navy text-white border-t border-slate-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+    <!-- Footer -->
+    <footer class="bg-repNavy-dark border-t border-slate-800 text-slate-400 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 
-                <div class="md:col-span-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-republicano-red rounded-lg flex items-center justify-center font-black text-xl text-white">
-                            R
-                        </div>
-                        <span class="font-extrabold text-lg text-white tracking-wide">PARTIDO REPUBLICANO • BIOBÍO</span>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-repRed flex items-center justify-center text-white font-black text-lg">
+                        1
                     </div>
-                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
-                        Plataforma no oficial de difusión y movilización para los militantes del Partido Republicano en la Región del Biobío. Uniendo a Concepción, Biobío y Arauco en torno a nuestros principios fundamentales.
-                    </p>
+                    <div>
+                        <span class="text-white font-black text-sm block">LISTA 1 - LA VOZ DE LA MILITANCIA</span>
+                        <span class="text-[11px] text-slate-400">Partido Republicano • Región del Bío Bío</span>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="font-bold text-xs uppercase text-amber-400 tracking-wider mb-4">Navegación Rápida</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="#lista" class="hover:text-white transition-colors">Candidatos de la Lista</a></li>
-                        <li><a href="#ejes" class="hover:text-white transition-colors">Plan de Gestión</a></li>
-                        <li><a href="#comunas" class="hover:text-white transition-colors">Red de Comunas</a></li>
-                        <li><a href="#materiales" class="hover:text-white transition-colors">Descargas WhatsApp</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-xs uppercase text-amber-400 tracking-wider mb-4">Provincias</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li>Concepción (12 Comunas)</li>
-                        <li>Provincia del Biobío (14 Comunas)</li>
-                        <li>Provincia de Arauco (7 Comunas)</li>
-                        <li class="pt-2">
-                            <span class="inline-block bg-emerald-900/60 border border-emerald-500/40 text-emerald-300 px-2 py-1 rounded text-[10px] font-bold">
-                                Sede Regional Abierta
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+                <!-- Social Badge -->
+                <a href="https://instagram.com/LAVOZ_REPUBLICANABIOBIO" target="_blank" rel="noopener" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-2 rounded-xl flex items-center gap-2 font-semibold transition-colors">
+                    <i class="fa-brands fa-instagram text-pink-500 text-base"></i>
+                    <span>@LAVOZ_REPUBLICANABIOBIO</span>
+                </a>
 
             </div>
 
-            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-                <p>© 2026 Militancia Unida Biobío - Partido Republicano de Chile.</p>
-                <div class="flex items-center gap-4">
-                    <a href="https://partidorepublicanodechile.cl" target="_blank" class="hover:text-slate-200 underline">Partido Republicano Oficial</a>
-                    <a href="https://consulta.servel.cl" target="_blank" class="hover:text-slate-200 underline">Consulta Servel</a>
+            <div class="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
+                <p>© 2026 Lista 1 - La Voz de la Militancia con Corazón Republicano. Región del Bío Bío.</p>
+                <div class="flex gap-4">
+                    <span>Concepción</span>
+                    <span>•</span>
+                    <span>Biobío</span>
+                    <span>•</span>
+                    <span>Arauco</span>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        const candidatesData = [
+        
+        // Theme Switcher Logic (System Auto + Manual Override)
+        function updateThemeIcons(isDark) {
+            const desktopIcon = document.getElementById('theme-toggle-icon');
+            const mobileIcon = document.getElementById('theme-toggle-icon-mobile');
+            
+            if (isDark) {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-sun text-amber-400 text-base";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-sun text-amber-400 text-base";
+            } else {
+                if (desktopIcon) desktopIcon.className = "fa-solid fa-moon text-slate-700 text-base";
+                if (mobileIcon) mobileIcon.className = "fa-solid fa-moon text-slate-700 text-base";
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcons(isDark);
+        }
+
+        // Listen for OS system theme changes automatically
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                    updateThemeIcons(true);
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeIcons(false);
+                }
+            }
+        });
+
+        // 8 Programmatic Pillars Data Source
+        const pillarsData = [
             {
-                name: "Fernando Peña",
-                role: "Líder Regional & Vocero Biobío",
-                category: "directiva",
-                province: "Provincia de Concepción",
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
-                quote: "El Biobío necesita recuperar la seguridad, impulsar la inversión y volver a ser el motor industrial del sur de Chile."
+                id: 1,
+                title: "Presencia Territorial y Servicio",
+                icon: "fa-hand-holding-heart",
+                badge: "Pilar 1",
+                objective: "Desarrollar una presencia territorial permanente, organizada de acuerdo con las necesidades de cada comuna y orientada al servicio comunitario, sin utilizar la ayuda social como instrumento electoral.",
+                lines: [
+                    "Designar coordinación territorial por provincia articulada con comunas.",
+                    "Elaborar un calendario trimestral de actividades sociales y comunitarias.",
+                    "Vincularse respetuosamente con juntas de vecinos, organizaciones sociales y deportivas.",
+                    "Operativos de recuperación de espacios públicos y apoyo ante emergencias.",
+                    "Crear equipos voluntarios de militantes con protocolos de organización."
+                ],
+                commitments: [
+                    "Realizar al menos una actividad territorial trimestral en cada provincia.",
+                    "Publicar al inicio de cada trimestre el calendario regional de actividades.",
+                    "Mantener un registro de necesidades comunales y organizaciones vinculadas."
+                ]
             },
             {
-                name: "Paz Charpentier",
-                role: "Representante Parlamentario Distrito 20",
-                category: "concepcion",
-                province: "Provincia de Concepción",
-                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
-                quote: "Defendemos con firmeza los principios republicanos y la voz de nuestras comunas penquistas en el Congreso."
+                id: 2,
+                title: "Formación Política y Liderazgos",
+                icon: "fa-graduation-cap",
+                badge: "Pilar 2",
+                objective: "Formar militantes en principios republicanos, historia política, gestión pública, comunicación y trabajo territorial, creando oportunidades reales para nuevos liderazgos.",
+                lines: [
+                    "Principios, Historia e Identidad Republicana.",
+                    "Administración pública, gestión municipal y funcionamiento institucional.",
+                    "Economía, desarrollo regional, seguridad y políticas sociales.",
+                    "Oratoria, vocería y manejo responsable de redes sociales.",
+                    "Diseño de proyectos comunitarios, campañas y apoderados electorales."
+                ],
+                commitments: [
+                    "Implementar un programa semestral de formación abierto a toda la militancia.",
+                    "Actividades presenciales e híbridas en Concepción, Biobío y Arauco.",
+                    "Registro voluntario de competencias para incorporar militantes a equipos."
+                ]
             },
             {
-                name: "James Argo",
-                role: "Coordinador de Gestión Comunal Concepción",
-                category: "concepcion",
-                province: "Provincia de Concepción",
-                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
-                quote: "Transparencia absoluta en el uso de los fondos públicos y tolerancia cero a la corrupción comunal."
+                id: 3,
+                title: "Comunicación Clara y Directa",
+                icon: "fa-bullhorn",
+                badge: "Pilar 3",
+                objective: "Establecer canales institucionales que entreguen información útil, oportuna y verificable, fortaleciendo la cercanía con comunas, autoridades y militancia.",
+                lines: [
+                    "Canal informativo regional y provincial con reglas claras.",
+                    "Calendario mensual de actividades y fechas relevantes.",
+                    "Boletín semanal 'La Voz Republicana' en formato breve.",
+                    "Minuta regional de contingencia con postura institucional.",
+                    "Formulario permanente para recibir propuestas desde las comunas."
+                ],
+                commitments: [
+                    "Habilitar durante el primer mes los canales oficiales.",
+                    "Difundir mensualmente un calendario único de actividades.",
+                    "Entregar síntesis trimestral de gestiones y avances."
+                ]
             },
             {
-                name: "Coordinación Los Ángeles",
-                role: "Presidencia Comunal Los Ángeles",
-                category: "biobio",
-                province: "Provincia del Biobío",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-                quote: "Consolidando la fuerza agrícola y el desarrollo rural para las 14 comunas del Biobío interior."
+                id: 4,
+                title: "Participación y Democracia Interna",
+                icon: "fa-comments",
+                badge: "Pilar 4",
+                objective: "Crear instancias regulares para escuchar propuestas, conocer preocupaciones y favorecer una participación respetuosa en la gestión regional.",
+                lines: [
+                    "Encuentros provinciales abiertos y reuniones periódicas.",
+                    "Cabildos temáticos sobre asuntos regionales y organización.",
+                    "Mecanismo transparente para presentar iniciativas y recibir respuesta.",
+                    "Encuestas internas consultivas para decisiones clave.",
+                    "Reconocimiento público al trabajo voluntario de militantes."
+                ],
+                commitments: [
+                    "Al menos un encuentro regional y provincial por semestre.",
+                    "Responder formalmente las propuestas ingresadas por los militantes.",
+                    "Publicar conclusiones y acuerdos de cada encuentro."
+                ]
             },
             {
-                name: "Equipo Prov. Arauco",
-                role: "Coordinación Arauco & Cañete",
-                category: "arauco",
-                province: "Provincia de Arauco",
-                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400",
-                quote: "Exigimos paz, estado de derecho y justicia para los vecinos de la Provincia de Arauco."
+                id: 5,
+                title: "Descentralización y Fortalecimiento Comunal",
+                icon: "fa-diagram-project",
+                badge: "Pilar 5",
+                objective: "Distribuir la presencia, las actividades y las oportunidades de manera equilibrada entre las 3 provincias, apoyando a las comunas en su desarrollo organizativo.",
+                lines: [
+                    "Plan provincial para Concepción, Biobío y Arauco con actores locales.",
+                    "Directorio actualizado de referentes comunales.",
+                    "Agenda regional itinerante sin concentrar todo en una sola ciudad.",
+                    "Acompañamiento estrecho a comunas con menor nivel organizativo.",
+                    "Formatos híbridos para eliminar barreras de traslado."
+                ],
+                commitments: [
+                    "Aprobar plan básico provincial en los primeros 60 días.",
+                    "Garantizar rotación territorial en capacitaciones y reuniones.",
+                    "Balance semestral de actividades por provincia."
+                ]
             },
             {
-                name: "Juventud Republicana Biobío",
-                role: "Coordinación de Jóvenes Regional",
-                category: "directiva",
-                province: "Región del Biobío",
-                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400",
-                quote: "Formando a la nueva generación de líderes para los desafíos del Biobío y Chile."
+                id: 6,
+                title: "Coordinación Política y Electoral",
+                icon: "fa-chess-king",
+                badge: "Pilar 6",
+                objective: "Fortalecer la colaboración entre la directiva regional, comunales, cabildos y autoridades electas con reglas conocidas y preparación anticipada.",
+                lines: [
+                    "Mesa periódica de coordinación regional y territorial.",
+                    "Banco voluntario de profesionales, técnicos y dirigentes.",
+                    "Formación anticipada de apoderados generales y de mesa.",
+                    "Protocolos para campañas ordenadas y coherentes.",
+                    "Minutas técnicas en seguridad, empleo, conectividad y salud."
+                ],
+                commitments: [
+                    "Constituir equipos de apoyo en los primeros 90 días.",
+                    "Jornada anual de planificación estratégica regional."
+                ]
+            },
+            {
+                id: 7,
+                title: "Transparencia y Rendición de Cuentas",
+                icon: "fa-clipboard-check",
+                badge: "Pilar 7",
+                objective: "Instalar una cultura de gestión abierta con planificación, indicadores simples y rendición periódica ante toda la militancia.",
+                lines: [
+                    "Plan anual de trabajo con responsables y plazos.",
+                    "Tablero trimestral de cumplimiento de compromisos.",
+                    "Informe de actividades por provincia y área.",
+                    "Cuenta pública anual de la directiva regional.",
+                    "Mecanismo interno de revisión y mejora continua."
+                ],
+                commitments: [
+                    "Publicar el plan anual y avances trimestrales.",
+                    "Realizar una cuenta pública anual abierta a preguntas de militantes."
+                ]
+            },
+            {
+                id: 8,
+                title: "Mujeres y Nuevas Generaciones",
+                icon: "fa-users-line",
+                badge: "Pilar 8",
+                objective: "Promover la participación efectiva de mujeres y jóvenes adultos, fortaleciendo sus capacidades y facilitando su incorporación con criterios de mérito y compromiso.",
+                lines: [
+                    "Espacios regionales y provinciales de encuentro y colaboración.",
+                    "Detectar, formar y acompañar liderazgos femeninos y juveniles.",
+                    "Incorporarlos a equipos territoriales, programáticos y electorales.",
+                    "Facilitar participación a quienes estudian, trabajan o cuidan familias.",
+                    "Acompañamiento específico para futuras candidaturas."
+                ],
+                commitments: [
+                    "Encuentro regional semestral de Mujeres Republicanas.",
+                    "Red regional de Jóvenes Adultos Republicanos en las 3 provincias.",
+                    "Formación y mentoría para nuevos liderazgos."
+                ]
             }
         ];
 
-        const comunasData = {
-            concepcion: [
-                { name: "Concepción", coord: "James Argo / Coord. Central" },
-                { name: "Talcahuano", coord: "Equipo Comunal Talcahuano" },
-                { name: "San Pedro de la Paz", coord: "Militancia San Pedro" },
-                { name: "Chiguayante", coord: "Coordinador Chiguayante" },
-                { name: "Coronel", coord: "Enlace Comunal Coronel" },
-                { name: "Lota", coord: "Equipo Lota Republicano" },
-                { name: "Hualpén", coord: "Coordinador Hualpén" },
-                { name: "Tomé", coord: "Enlace Tomé" },
-                { name: "Penco", coord: "Militantes Penco" },
-                { name: "Santa Juana", coord: "Coordinación Santa Juana" },
-                { name: "Florida", coord: "Enlace Florida" },
-                { name: "Hualqui", coord: "Coordinación Hualqui" }
-            ],
-            biobio: [
-                { name: "Los Ángeles", coord: "Sede Provincial Los Ángeles" },
-                { name: "Cabrero", coord: "Coordinador Cabrero" },
-                { name: "Mulchén", coord: "Equipo Mulchén" },
-                { name: "Nacimiento", coord: "Enlace Nacimiento" },
-                { name: "Negrete", coord: "Coordinación Negrete" },
-                { name: "Quilaco", coord: "Militantes Quilaco" },
-                { name: "Quilleco", coord: "Enlace Quilleco" },
-                { name: "San Rosendo", coord: "Militancia San Rosendo" },
-                { name: "Santa Bárbara", coord: "Coordinador Santa Bárbara" },
-                { name: "Tucapel", coord: "Equipo Tucapel" },
-                { name: "Yumbel", coord: "Enlace Yumbel" },
-                { name: "Alto Biobío", coord: "Coordinación Alto Biobío" },
-                { name: "Antuco", coord: "Militancia Antuco" },
-                { name: "Laja", coord: "Coordinación Laja" }
-            ],
-            arauco: [
-                { name: "Lebu", coord: "Sede Provincial Lebu" },
-                { name: "Arauco", coord: "Coordinador Comunal Arauco" },
-                { name: "Cañete", coord: "Equipo Cañete" },
-                { name: "Contulmo", coord: "Enlace Contulmo" },
-                { name: "Curanilahue", coord: "Coordinación Curanilahue" },
-                { name: "Los Álamos", coord: "Militantes Los Álamos" },
-                { name: "Tirúa", coord: "Enlace Tirúa" }
-            ]
-        };
+        // Current Active Pillar State
+        let activePillarId = 1;
 
-        function renderCandidates(filter = 'todos') {
-            const grid = document.getElementById('candidatesGrid');
-            grid.innerHTML = '';
+        // Render Tabs and Content
+        function renderPillars() {
+            const tabsContainer = document.getElementById('pillar-tabs');
+            const contentContainer = document.getElementById('pillar-content');
 
-            const filtered = filter === 'todos' 
-                ? candidatesData 
-                : candidatesData.filter(c => c.category === filter);
+            // Render Tab Buttons
+            tabsContainer.innerHTML = pillarsData.map(p => `
+                <button onclick="selectPillar(${p.id})" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${
+                    p.id === activePillarId 
+                    ? 'bg-repRed text-white shadow-lg shadow-repRed/30 scale-105' 
+                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+                }">
+                    <i class="fa-solid ${p.icon}"></i>
+                    <span>Pilar ${p.id}</span>
+                </button>
+            `).join('');
 
-            filtered.forEach(c => {
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between";
-                card.innerHTML = `
-                    <div class="p-6">
-                        <div class="flex items-center gap-4 mb-4">
-                            <img src="${c.image}" alt="${c.name}" class="w-16 h-16 rounded-2xl object-cover shadow-md border-2 border-slate-100">
+            // Get Current Pillar
+            const current = pillarsData.find(p => p.id === activePillarId);
+
+            // Render Active Pillar Content Card
+            contentContainer.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-repRed/10 dark:bg-repRed/20 border border-repRed/30 dark:border-repRed/40 text-repRed dark:text-repRed-glow flex items-center justify-center text-xl">
+                                <i class="fa-solid ${current.icon}"></i>
+                            </div>
                             <div>
-                                <h3 class="font-black text-slate-900 text-lg leading-snug">${c.name}</h3>
-                                <p class="text-xs font-bold text-republicano-red uppercase tracking-wide mt-0.5">${c.role}</p>
-                                <span class="text-[11px] text-slate-400 block mt-1"><i class="fa-solid fa-location-dot"></i> ${c.province}</span>
+                                <span class="text-xs font-black uppercase text-amber-600 dark:text-amber-400 tracking-wider">${current.badge}</span>
+                                <h3 class="text-2xl font-black text-slate-900 dark:text-white">${current.title}</h3>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-xs italic bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            "${c.quote}"
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">a) Objetivo Estratégico</h4>
+                        <p class="text-sm sm:text-base text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/60 p-4 rounded-xl leading-relaxed">
+                            ${current.objective}
                         </p>
                     </div>
-                    <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-md">
-                            <i class="fa-solid fa-check"></i> Candidato Lista
-                        </span>
-                        <button onclick="scrollToSection('sumate')" class="text-xs text-republicano-navy font-bold hover:underline">
-                            Apoyar Candidato →
-                        </button>
+
+                    <div class="grid md:grid-cols-2 gap-6 pt-2">
+                        <div>
+                            <h4 class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-list-check"></i> b) Líneas de Acción
+                            </h4>
+                            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300">
+                                ${current.lines.map(line => `
+                                    <li class="flex items-start gap-2.5 bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
+                                        <i class="fa-solid fa-circle-chevron-right text-repRed text-sm mt-0.5"></i>
+                                        <span>${line}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check"></i> c) Compromisos Verificables
+                            </h4>
+                            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300">
+                                ${current.commitments.map(c => `
+                                    <li class="flex items-start gap-2.5 bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
+                                        <i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 font-black text-sm mt-0.5"></i>
+                                        <span>${c}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     </div>
-                `;
-                grid.appendChild(card);
-            });
+                </div>
+            `;
         }
 
-        function filterCandidates(cat) {
-            const buttons = document.querySelectorAll('#candidateTabs .tab-btn');
-            buttons.forEach(btn => {
-                btn.className = "tab-btn bg-white text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl font-bold text-sm transition-all";
-            });
-            event.target.className = "tab-btn active bg-republicano-navy text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all";
-            renderCandidates(cat);
+        function selectPillar(id) {
+            activePillarId = id;
+            renderPillars();
         }
 
-        function renderComunas(provKey) {
-            const grid = document.getElementById('comunasGrid');
-            grid.innerHTML = '';
-            
-            const list = comunasData[provKey] || [];
-            list.forEach(item => {
-                const btn = document.createElement('button');
-                btn.className = "bg-slate-800 hover:bg-republicano-red text-white p-3.5 rounded-xl text-center transition-all border border-slate-700/80 hover:border-red-500 shadow-sm flex flex-col items-center justify-center";
-                btn.onclick = () => showComunaDetail(item.name, item.coord, provKey);
-                btn.innerHTML = `
-                    <i class="fa-solid fa-building-flag text-xs text-amber-400 mb-1"></i>
-                    <span class="font-bold text-xs leading-tight">${item.name}</span>
-                `;
-                grid.appendChild(btn);
-            });
-        }
+        /* Countdown Timer to August 09 Election */
+        function initCountdown() {
+            const targetDate = new Date('August 9, 2026 00:00:00').getTime();
 
-        function filterComunas(provKey) {
-            document.querySelectorAll('.prov-btn').forEach(btn => {
-                btn.className = "prov-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-6 py-3 rounded-xl font-bold text-sm transition-all";
-            });
-            
-            const activeBtn = document.getElementById(`prov-${provKey}-btn`);
-            if(activeBtn) {
-                activeBtn.className = "prov-btn bg-republicano-red text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all";
+            function update() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cd-days').innerText = "00";
+                    document.getElementById('cd-hours').innerText = "00";
+                    document.getElementById('cd-mins').innerText = "00";
+                    document.getElementById('cd-secs').innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
             }
-            renderComunas(provKey);
+
+            update();
+            setInterval(update, 1000);
         }
 
-        function showComunaDetail(name, coord, provKey) {
-            const box = document.getElementById('comunaDetailBox');
-            const provName = provKey === 'concepcion' ? 'Provincia de Concepción' : (provKey === 'biobio' ? 'Provincia del Biobío' : 'Provincia de Arauco');
-            
-            document.getElementById('detailProvincia').innerText = provName;
-            document.getElementById('detailComunaName').innerText = `Comuna de ${name}`;
-            document.getElementById('detailCoordinator').innerText = `Coordinación Responsable: ${coord}`;
-            box.classList.remove('hidden');
-            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        /* Mobile Menu Toggle */
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
 
-        function toggleFaq(id) {
-            const body = document.getElementById(`faq-body-${id}`);
-            const icon = document.getElementById(`faq-icon-${id}`);
-            
-            if (body.classList.contains('hidden')) {
-                body.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                body.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        function shareWhatsApp() {
-            const text = encodeURIComponent("¡Militante del Partido Republicano en el Biobío! Revisa las propuestas y candidatos de la Gran Lista para las 33 comunas de nuestra región aquí: " + window.location.href);
-            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-        }
-
-        function downloadMock(filename) {
-            showToast(`Iniciando descarga de: ${filename}`);
-        }
-
-        function confirmEvent(eventName) {
-            showToast(`Has confirmado asistencia para: ${eventName}`);
-        }
-
-        function submitVolunteer(e) {
+        /* Form Submission Handler */
+        function handleVolunteerSubmit(e) {
             e.preventDefault();
-            const alertBox = document.getElementById('formSuccessAlert');
-            alertBox.classList.remove('hidden');
-            document.getElementById('volunteerForm').reset();
+            const form = document.getElementById('volunteer-form');
+            const successMsg = document.getElementById('form-success-msg');
+            
+            form.reset();
+            successMsg.classList.remove('hidden');
             setTimeout(() => {
-                alertBox.classList.add('hidden');
+                successMsg.classList.add('hidden');
             }, 6000);
         }
 
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if(el) el.scrollIntoView({ behavior: 'smooth' });
+        // AI Assistant Call using gemini-3-flash-preview
+        async function askAI(question) {
+            document.getElementById('ai-input').value = question;
+            handleAISubmit(new Event('submit'));
         }
 
-        function closeMobileMenu() {
-            document.getElementById('mobileMenu').classList.add('hidden');
+        async function handleAISubmit(e) {
+            if (e) e.preventDefault();
+            
+            const inputEl = document.getElementById('ai-input');
+            const box = document.getElementById('ai-response-box');
+            const sendBtn = document.getElementById('ai-send-btn');
+            const query = inputEl.value.trim();
+
+            if (!query) return;
+
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="flex items-center gap-2 text-amber-500 dark:text-amber-400 font-semibold text-xs">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Analizando las Bases Programáticas Bío Bío con IA...</span>
+                </div>
+            `;
+            sendBtn.disabled = true;
+
+            const systemPrompt = `Eres el asistente virtual oficial de la Lista 1 "La Voz de la Militancia con Corazón Republicano" del Partido Republicano en la Región del Bío Bío (Concepción, Biobío, Arauco).
+Tu función es responder de manera amable, clara, precisa y entusiasmada a los militantes utilizando la información oficial de las bases programáticas:
+- Directiva Regional:
+  * Presidenta Regional: Yasna Mardones Sáez
+  * Secretario Regional: Luis Santibáñez Bastidas
+  * Tesorera Regional: Erika Román Silva
+  * Vicepresidente 1° Regional: Sebastián Guenante Arancibia
+  * Vicepresidente 2° Regional: Ángelo Millamán López
+- Candidatos a Consejeros del Cabildo (Lista oficial completada):
+  * #2 Ingrid Salazar Mora
+  * #3 Christian Arellano Vera
+  * #4 James Argo Chávez
+  * #6 Jacqueline Delgado Contreras
+  * #7 Eliana Fernández Neira
+  * #10 José Miguel Muñoz Sáez
+  * #11 Jonathan Bedwell Silva
+  * #12 Eduardo Carrillo Neira
+  * #13 César Valenzuela Ramírez
+  * #14 Manuel Pino Contreras
+  * #15 Patricio Torres Bastías
+- 8 Pilares: Presencia Territorial, Formación (Escuela Republicana), Comunicación Clara (Boletín La Voz Republicana), Participación/Democracia, Descentralización Provincial, Coordinación Electoral, Transparencia (Cuenta pública), Mujeres y Jóvenes.
+- Elecciones: 09 de Agosto.
+Sé directo y conciso en máximo 2 a 3 párrafos.`;
+
+            const apiKey = ""; // Canvas runtime environment automatically provides runtime key
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: query }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (reply) {
+                    box.innerHTML = `
+                        <div class="space-y-2">
+                            <div class="font-bold text-amber-500 dark:text-amber-400 text-xs flex items-center gap-1.5">
+                                <i class="fa-solid fa-robot"></i> Respuesta Oficial Lista 1:
+                            </div>
+                            <div class="text-slate-800 dark:text-slate-200 text-xs sm:text-sm leading-relaxed whitespace-pre-line">${reply}</div>
+                        </div>
+                    `;
+                } else {
+                    box.innerHTML = `<div class="text-red-500 dark:text-red-400 text-xs">No se pudo obtener respuesta en este momento. Por favor reintenta.</div>`;
+                }
+            } catch (err) {
+                console.error(err);
+                box.innerHTML = `<div class="text-red-500 dark:text-red-400 text-xs">Ocurrió un error de conexión al consultar la IA.</div>`;
+            } finally {
+                sendBtn.disabled = false;
+            }
         }
 
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-bold z-50 flex items-center gap-2 border border-slate-700 animate-bounce';
-            toast.innerHTML = `<i class="fa-solid fa-circle-info text-amber-400"></i> ${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3500);
-        }
-
+        // Initialize App on Load
         window.onload = function() {
-            renderCandidates('todos');
-            filterComunas('concepcion');
-
-            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-                const menu = document.getElementById('mobileMenu');
-                menu.classList.toggle('hidden');
-            });
+            const isDark = document.documentElement.classList.contains('dark');
+            updateThemeIcons(isDark);
+            renderPillars();
+            initCountdown();
         };
     </script>
 </body>
